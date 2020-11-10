@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Sunrise Checker</title>
+
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+
+
+    <body>
+        
+        <!--Navbar -->
+        <div class="navbar-fixed">
+            <nav class="teal">
+                <div class="container">
+                    <div class="nav-wrapper">
+                        <a href="#!" class="right brand-logo">SunWatch</a>
+                        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                        <ul class="left hide-on-med-and-down">
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#search">Search</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <!-- End Nav-->
+        
+        <!-- Peeking sun animation -->
+            <div class="container-fluid" id="sunPeek">
+                <div id="sun">
+                    
+                </div>
+            </div>
+
+        <!-- END Peeking sun animation -->
+
+        <!-- Search section-->
+        <section class="section section-search lighten-1 green white-text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col s12">
+                        <h5>Search By location For Sunrise and Sunset Times</h5>
+                        <div id="searchForm" class="input-field">
+                            <input type="text" id="autocomplete-input" class="white grey-text autocomplete" placeholder="Paris,London,France..">
+                            <button class="btn waves-effect waves-light" type="submit" id="searchButton" name="searchButton">Search
+                                <i class="material-icons right">search</i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <!-- End Search Section -->
+        
+    <!-- Results diplay section-->
+    <div class="container"></div>
+        <div class="card medium">
+                <!--LEFT AND RIGHT CARDS FOR TIMES-->
+                <div class="row">
+                    <div class="col s6 center">
+                        <div id="sunrise-card" class="card small lighten-3 yellow"><h3>Sunrise</h3></div>
+                    </div>
+                    <div class="col s6 center">
+                        <div id="sunset-card" class="card small lighten-2 orange"><h3>Sunset</h3></div>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+    <br><br>
+<!-- Container for sun arc animation-->
+    <div class="container">
+
+        
+    </div>
+
+
+
+    <!-- End Results display-->
+        
+        
+
+
+        
+
+     <!-- SCRIPTS -->    
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="js/materialize.js"></script>
+        <script src="js/init.js"></script>
+        <script src="js/script.js"></script>
+    </body>
+</html>
+
