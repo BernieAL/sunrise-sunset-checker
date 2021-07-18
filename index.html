@@ -7,8 +7,8 @@
 
 
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 
 
@@ -47,7 +47,7 @@
                     <div class="col s12">
                         <h5>Search By location For Sunrise and Sunset Times</h5>
                         <div id="searchForm" class="input-field">
-                            <input type="text" id="autocomplete-input" class="white grey-text autocomplete" placeholder="Paris,London,France..">
+                            <input type="text" id="autocomplete-input" class="white grey-text autocomplete" placeholder="Paris,London,Monaco..">
                             <button class="btn waves-effect waves-light" type="submit" id="searchButton" name="searchButton">Search
                                 <i class="material-icons right">search</i>
                             </button>
@@ -63,6 +63,7 @@
         <div class="card medium">
                 <!--LEFT AND RIGHT CARDS FOR TIMES-->
                 <div class="row">
+                    <h2 id="locationDisplayHeader" style="text-align: center;"></h2>
                     <div class="col s6 center">
                         <div id="sunrise-card" class="card small lighten-3 yellow"><h3>Sunrise</h3></div>
                     </div>
@@ -91,9 +92,9 @@
 
      <!-- SCRIPTS -->    
         <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script src="js/materialize.js"></script>
-        <script src="js/init.js"></script>
-        <script src="js/script.js"></script>
+        <script src="materialize.min.js"></script>
+        <!-- <script src="init.js"></script> -->
+        <script src="script.js"></script>
     </body>
 </html>
 
