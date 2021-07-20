@@ -7,56 +7,63 @@ window.onload = function() {
 //document.querySelector('#sunPeek').css
 
 
- /* On click of 'search' -> get text input from user 
+ /* On click of 'search' -> get text input from user
         Then use Fetch to hit API with location they entered
             Once response from API is recieved, destructure JSON object to extract the times
                 Call the helper methods and pass in the corresponding times
-                    Done   
- */   
+                    Done
+ */
 
     var cityName;
 
     document.querySelector('#searchButton').addEventListener('click',(e)=>{
         e.preventDefault();
+
+        //attempting to clear previous entry
+        renderResultRow(' ')
+        updateSunrise(' ')
+        updateSunrise(' ')
+
+
         var locationEntered = document.querySelector('#autocomplete-input').value
-        console.log(locationEntered)
-        
+        //console.log(locationEntered)
+
         const urlIn = "https://api.mapbox.com/geocoding/v5/mapbox.places/"+locationEntered+".json?access_token=pk.eyJ1IjoiYmh1cm5hbCIsImEiOiJjazgwdHk2bDAwMzd0M21udGRrczhyejVqIn0.rt0SsWU6VcEm_3-FVhN82w"
-        
-        getGeoCoordinates(urlIn)
 
-      fetch (urlIn)
-        .then(response => response.json())
-        .then(data =>{
-
-            let latLong = {
-                query: data.query[0],
-                lat: data.features[0].geometry.coordinates[0],
-                long: data.features[0].geometry.coordinates[1],
-            }
-            return latLong
-        }).then(function(latLong){
-            cityName = latLong.query
-            lat = latLong.lat
-            long = latLong.long
-
-           let sunURL = "https://api.sunrise-sunset.org/json?lat="+lat+"&lng="+long
-            fetch(sunURL)
+        const results = fetch (urlIn)
+             .then(response => response.json())
+             .then(data =>{
+                let latLong = {
+                    locationName: data.query[0],
+                    lat: data.features[0].geometry.coordinates[0],
+                    long: data.features[0].geometry.coordinates[1],
+                    }
+                    return latLong
+             })
+             .then(latLong =>{
+                /* UNCOMMENT TO SEE RAW JSON RESPONSE FOR LAT LONG*/
+                //console.log("Coordinates for location: " + latLong.locationName + "----" + JSON.stringify(latLong))
+                let sunURL = "https://api.sunrise-sunset.org/json?lat="+latLong.lat+"&lng="+latLong.long
+                fetch(sunURL)
                 .then(response => response.json())
                 .then(data=>{
                     const times = {
-                        sunrise : (data.results.sunrise ), 
-                        sunset :(data.results.sunset )
+                        sunrise : (data.results.sunrise),
+                        sunset :(data.results.sunset)
                     }
-
-                    renderResultRow(cityName)
-                    updateSunrise(times.sunrise)
-                    updateSunset(times.sunset)
-                })
+                /* UNCOMMENT TO SEE RAW JSON RESPONSE FOR SUN TIMES*/
+                //console.log("Times for " + latLong.locationName + "----" + "Sunrise: " + times.sunrise + "," + "Sunset: " + times.sunset)
+                renderResultRow(latLong.locationName)
+                updateSunrise((times.sunrise))
+                updateSunset((times.sunset))
+            })
+            .catch(error=>{
+                 renderResultRow("Error getting LatLong for Query Please Refresh and Try Again")
+            })
         })
-})  
-    
- 
+
+    })
+
 //=====================================================
 /* Helper methods - these render updated content to the sunrise and sunset cards  */
     //fill sunrise
